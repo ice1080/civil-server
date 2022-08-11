@@ -2,6 +2,7 @@
 
 import React from 'react' // needed by render to string
 import { renderToString } from 'react-dom/server'
+import StaticRouter from 'react-router-dom/server'
 import { JssProvider, SheetsRegistry, createGenerateId } from 'react-jss'
 import cloneDeep from 'lodash/cloneDeep'
 
@@ -60,7 +61,9 @@ function serverReactRender(App, req, res, next) {
 
     const body = renderToString(
       <JssProvider registry={sheets} generateId={generateId}>
-        <App {...props} />
+        <StaticRouter location={req.url}>
+          <App {...props} />
+        </StaticRouter>
       </JssProvider>
     )
 

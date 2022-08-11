@@ -94,3 +94,6 @@ globalConfig.json
 
 #less history frequently genereated by the bash shell
 .lesshst
+
+#other IDEs
+.idea
